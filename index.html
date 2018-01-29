@@ -11,7 +11,30 @@
 	</div>
 
 	<script>
-		
+		var gameStart = false;
+		var gameOver = false;
+		var gameWin = false;
+		var gunman = document.querySelector('#gunman');
+		gunman.addEventListener('click', function () {
+		    if (gameStart) return;
+		    gameStart = true;
+		    gunman.classList.add('gunman_walk');
+		    setTimeout(function () {
+				gunman.classList.remove('gunman_walk');
+                gunman.classList.add('gunman_shoot');
+                setTimeout(function () {
+					if (gameWin) return;
+					gameOver = true;
+					alert('ТЕБЯ УБИЛИ');
+                }, 2000);
+                gunman.addEventListener('click', function () {
+					if (gameOver) return;
+					gameWin = true;
+                    gunman.classList.remove('gunman_shoot');
+                    gunman.classList.add('gunman_dead');
+                });
+            }, 10000);
+		})
 	</script>
 </body>
 </html>
