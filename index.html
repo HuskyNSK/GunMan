@@ -6,35 +6,55 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 	<div class="wrapper">
 		<div id="gunman" class="gunman"></div>
 	</div>
+		<audio src="./round.mp3" autoplay="autoplay" loop="loop" class="round"></audio>
+		<!--<audio src="./win.mp3" class="win"></audio>-->
+		<!--<audio src="./lose.mp3" class="lose"></audio>-->
 
 	<script>
 		var gameStart = false;
 		var gameOver = false;
 		var gameWin = false;
 		var gunman = document.querySelector('#gunman');
-		gunman.addEventListener('click', function () {
+		var soundRound = document.querySelector('.round');
+		var wrap = document.querySelector('.wrapper');
+//		var soundWin = document.querySelector('.win');
+//        var soundLose = document.querySelector('.lose');
+
+        gunman.addEventListener('click', function () {
 		    if (gameStart) return;
 		    gameStart = true;
 		    gunman.classList.add('gunman_walk');
 		    setTimeout(function () {
 				gunman.classList.remove('gunman_walk');
                 gunman.classList.add('gunman_shoot');
+
                 setTimeout(function () {
 					if (gameWin) return;
 					gameOver = true;
 					alert('ТЕБЯ УБИЛИ');
+                    var soundLose = new Audio();
+                    soundLose.src = 'lose.mp3';
+                    soundLose.autoplay = true;
+                    soundRound.pause();
                 }, 2000);
                 gunman.addEventListener('click', function () {
+                    var audio = new Audio();
+                    audio.src = 'shoot.mp3';
+                    audio.autoplay = true;
 					if (gameOver) return;
 					gameWin = true;
+					console.log(gameWin);
                     gunman.classList.remove('gunman_shoot');
                     gunman.classList.add('gunman_dead');
                 });
+
             }, 10000);
-		})
+
+		});
 	</script>
 </body>
 </html>

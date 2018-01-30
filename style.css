@@ -2,25 +2,33 @@
 	cursor: url('./cursor.png'), crosshair;
 }
 html, body {
+	width: 1000px;
 	margin: 0 auto;
 	height: 100%;
+	background-color: black;
 }
 .wrapper {
 	position: relative;
 	height: 100%;
 	background: url('./bg.jpg') 0 0 no-repeat;
-	background-size: contain;
+	background-size: cover;
+}
+.wrapperRed {
+	position: relative;
+	height: 100%;
+	background: url('./bgred.png') 0 0 no-repeat;
+	background-size: cover;
 }
 .wrapper_st {
 	position: relative;
 	height: 100%;
 	background: url('./bgst.png') 0 0 no-repeat;
-	background-size: contain;
+	background-size: cover;
 }
 .stbutton {
 	position: absolute;
-	left: 40vw;
-	top: 450px;
+	left: 387px;
+	top: 400px;
 }
 
 .gunman {
@@ -37,7 +45,7 @@ html, body {
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
 	animation-timing-function: steps(1, end);
-	transform: translateX(40vw);
+	transform: translateX(440px);
 	transition: transform 10s linear;
 }
 @keyframes gunman_walk {
@@ -59,7 +67,7 @@ html, body {
 	animation-duration: 2s;
 	animation-iteration-count: 1;
 	animation-timing-function: steps(1, end);
-	transform: translateX(40vw);
+	transform: translateX(440px);
 }
 @keyframes gunman_shoot {
 	0% {
@@ -78,7 +86,7 @@ html, body {
 .gunman_dead {
 	width: 256px;
 	background-position-x: -952px;
-	transform: translateX(40vw);
+	transform: translateX(440px);
 }
 
 
