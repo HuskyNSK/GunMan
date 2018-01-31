@@ -31,30 +31,64 @@
 		    setTimeout(function () {
 				gunman.classList.remove('gunman_walk');
                 gunman.classList.add('gunman_shoot');
+                soundRound.pause();
+
+                setTimeout(function () {
+                    if (gameWin) return;
+                    gameOver = true;
+                    var soundFire = new Audio();
+                    soundFire.src = 'fire.mp3';
+                    soundFire.autoplay = true;
+                    wrap.classList.add('wrapperRed');
+                }, 1000);
 
                 setTimeout(function () {
 					if (gameWin) return;
 					gameOver = true;
-					alert('ТЕБЯ УБИЛИ');
                     var soundLose = new Audio();
                     soundLose.src = 'lose.mp3';
                     soundLose.autoplay = true;
-                    soundRound.pause();
                 }, 2000);
-                gunman.addEventListener('click', function () {
-                    var audio = new Audio();
-                    audio.src = 'shoot.mp3';
-                    audio.autoplay = true;
+
+                setTimeout(function () {
+                    if (gameWin) return;
+                    gameOver = true;
+                    if (confirm('ТЫ ПРОИГРАЛ! БУДЕШЬ ИГРАТЬ ЕЩЕ?') ){
+                        location.reload();
+					} else {
+                        document.location.href = "./index_st.html"
+					}
+                }, 3000);
+
+                gunman.addEventListener('click', function  () {
+                    var shoot = new Audio();
+                    shoot.src = 'shoot.mp3';
+                    shoot.autoplay = true;
 					if (gameOver) return;
 					gameWin = true;
-					console.log(gameWin);
                     gunman.classList.remove('gunman_shoot');
                     gunman.classList.add('gunman_dead');
+
+                    setTimeout(function () {
+                        var soundWin = new Audio();
+                        soundWin.src = 'win.mp3';
+                        soundWin.autoplay = true;
+                    }, 500);
+
+                    setTimeout(function () {
+                        if (confirm('ТЫ ПОБЕДИЛ! БУДЕШЬ ИГРАТЬ ЕЩЕ?') ){
+                            location.reload();
+                        } else {
+                            document.location.href = "./index_st.html"
+                        }
+                    }, 1000);
                 });
-
             }, 10000);
-
 		});
 	</script>
 </body>
 </html>
+var stay = new Audio();
+soundRound.pause();
+stay.src = 'stay.mp3';
+stay.autoplay = true;

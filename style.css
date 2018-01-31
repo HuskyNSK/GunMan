@@ -1,4 +1,4 @@
-.wrapper, .stbutton {
+.wrapper, .startbutton {
 	cursor: url('./cursor.png'), crosshair;
 }
 html, body {
@@ -22,10 +22,10 @@ html, body {
 .wrapper_st {
 	position: relative;
 	height: 100%;
-	background: url('./bgst.png') 0 0 no-repeat;
+	background: url('./bgst.jpg') 0 0 no-repeat;
 	background-size: cover;
 }
-.stbutton {
+.startbutton {
 	position: absolute;
 	left: 387px;
 	top: 400px;
