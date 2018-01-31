@@ -1,94 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<title>WILD GUNMAN</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>WILD GUNMAN</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+    <audio src="./theme.mp3" autoplay="autoplay" loop="loop"></audio>
 <body>
-
-	<div class="wrapper">
-		<div id="gunman" class="gunman"></div>
-	</div>
-		<audio src="./round.mp3" autoplay="autoplay" loop="loop" class="round"></audio>
-		<!--<audio src="./win.mp3" class="win"></audio>-->
-		<!--<audio src="./lose.mp3" class="lose"></audio>-->
-
-	<script>
-		var gameStart = false;
-		var gameOver = false;
-		var gameWin = false;
-		var gunman = document.querySelector('#gunman');
-		var soundRound = document.querySelector('.round');
-		var wrap = document.querySelector('.wrapper');
-//		var soundWin = document.querySelector('.win');
-//        var soundLose = document.querySelector('.lose');
-
-        gunman.addEventListener('click', function () {
-		    if (gameStart) return;
-		    gameStart = true;
-		    gunman.classList.add('gunman_walk');
-		    setTimeout(function () {
-				gunman.classList.remove('gunman_walk');
-                gunman.classList.add('gunman_shoot');
-                soundRound.pause();
-
-                setTimeout(function () {
-                    if (gameWin) return;
-                    gameOver = true;
-                    var soundFire = new Audio();
-                    soundFire.src = 'fire.mp3';
-                    soundFire.autoplay = true;
-                    wrap.classList.add('wrapperRed');
-                }, 1000);
-
-                setTimeout(function () {
-					if (gameWin) return;
-					gameOver = true;
-                    var soundLose = new Audio();
-                    soundLose.src = 'lose.mp3';
-                    soundLose.autoplay = true;
-                }, 2000);
-
-                setTimeout(function () {
-                    if (gameWin) return;
-                    gameOver = true;
-                    if (confirm('ТЫ ПРОИГРАЛ! БУДЕШЬ ИГРАТЬ ЕЩЕ?') ){
-                        location.reload();
-					} else {
-                        document.location.href = "./index_st.html"
-					}
-                }, 3000);
-
-                gunman.addEventListener('click', function  () {
-                    var shoot = new Audio();
-                    shoot.src = 'shoot.mp3';
-                    shoot.autoplay = true;
-					if (gameOver) return;
-					gameWin = true;
-                    gunman.classList.remove('gunman_shoot');
-                    gunman.classList.add('gunman_dead');
-
-                    setTimeout(function () {
-                        var soundWin = new Audio();
-                        soundWin.src = 'win.mp3';
-                        soundWin.autoplay = true;
-                    }, 500);
-
-                    setTimeout(function () {
-                        if (confirm('ТЫ ПОБЕДИЛ! БУДЕШЬ ИГРАТЬ ЕЩЕ?') ){
-                            location.reload();
-                        } else {
-                            document.location.href = "./index_st.html"
-                        }
-                    }, 1000);
-                });
-            }, 10000);
-		});
-	</script>
+    <div class="wrapper_st">
+        <a href="index_.html" class="startbutton"><img src="./stbtn.jpg" alt="start"></a>
+    </div>
 </body>
 </html>
-var stay = new Audio();
-soundRound.pause();
-stay.src = 'stay.mp3';
-stay.autoplay = true;
